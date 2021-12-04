@@ -60,6 +60,9 @@
     data.append('roomid', d.roomid)
     data.append('csrf', ObjectCookie.bili_jct)
     data.append('csrf_token', ObjectCookie.bili_jct)
+    if(d.hasOwnProperty("dm_type")){
+        data.append('dm_type', d.dm_type)
+    }
     let ajaxObj = await apiClient.post('/msg/send', data, {
       cookie: cookie
     })
