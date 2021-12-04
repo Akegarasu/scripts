@@ -6,6 +6,7 @@
 // @author       Akegarasu
 // @match        https://live.bilibili.com/*
 // @grant        unsafeWindow
+// @grant        GM_setClipboard
 // @require      https://cdn.jsdelivr.net/npm/axios@0.21.0/dist/axios.min.js
 // @run-at       document-start
 // @downloadURL       https://github.com/Akegarasu/scripts/raw/main/bilibili/bili-anti-danmuku.user.js
@@ -37,7 +38,8 @@
       if (arg[0].indexOf('api.live.bilibili.com/msg/send') > -1) {
         sendDanmuku(arg[1].data).then(res => {
           if (res.data.message == "f") {
-            prompt("你的弹幕被吞了", arg[1].data.msg)
+            alert("你的弹幕被吞了")
+            GM_setClipboard(arg[1].data.msg, "text")
           }
         })
         return new Promise(() => {
