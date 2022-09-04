@@ -19,7 +19,8 @@
     let userId = "2b4d16b835f06f373a9dea944eee2dc5"; // 一个随机userId
 
     const genRanHex = size => [...Array(size)].map(() => Math.floor(Math.random() * 16).toString(16)).join('');
-    const genWatermark = (uid) => `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 336 75" fill="#fff" fill-opacity="0.005" width="336" height="75" font-size="15px"><text x="10" y="1.5em">${uid}</text><text x="10" y="3em">${Date.now()}</text></svg>`
+    const randTime = () => { }
+    const genWatermark = (uid) => `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 336 75" fill="#fff" fill-opacity="0.005" width="336" height="75" font-size="15px"><text x="10" y="1.5em">${uid}</text><text x="10" y="3em">${Date.now() - Math.floor(Math.random() * 10000000)}</text></svg>`
     const genStyle = (uid) => `background: url(data:image/svg+xml;base64,${btoa(genWatermark(uid))}) !important`
 
     async function main() {
